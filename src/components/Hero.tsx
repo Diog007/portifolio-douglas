@@ -1,10 +1,16 @@
+// src/components/Hero.tsx
+
 import React, { Suspense, useMemo, useRef, useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
-import { Download, Github, Linkedin, Mail, Code, Shield } from 'lucide-react';
+import { Download, Github, Linkedin, Mail, Building } from 'lucide-react'; // Adicionado o ícone Building
 import { Canvas, useFrame, useThree } from '@react-three/fiber';
 import * as THREE from 'three';
 import { MatrixRain } from './MatrixRain';
+
+// --- ADICIONE A IMPORTAÇÃO DOS LOGOS AQUI ---
+import DaredeLogo from '/public/logotipo-darede-colorido.svg'; // Use o caminho correto para seus logos
+import SecofficeLogo from '/secoffice-white-red.png';    // Use o caminho correto para seus logos
 
 // --- Componente de Partículas 3D (sem alterações) ---
 const Particles = ({ count = 5000 }) => {
@@ -41,35 +47,34 @@ const Particles = ({ count = 5000 }) => {
 
 // --- Componente de Boot Sequence (sem alterações) ---
 const BootSequence = () => {
-  return (
-    <div className="absolute inset-0 flex items-center justify-center bg-cyber-primary z-20">
-      <div className="font-mono text-cyber-neon-green text-lg md:text-xl text-center">
-        <TypeAnimation
-          sequence={[
-            '[INITIALIZING CORE SYSTEMS...]', 200,
-            '[LOADING NEURAL INTERFACE...]', 300,
-            '[DECRYPTING IDENTITY MATRIX...]', 400,
-            'ACCESS GRANTED.', 500,
-            'WELCOME, DOUGLAS.', 1000
-          ]}
-          wrapper="p"
-          cursor={true}
-          speed={70}
-        />
+    return (
+      <div className="absolute inset-0 flex items-center justify-center bg-cyber-primary z-20">
+        <div className="font-mono text-cyber-neon-green text-lg md:text-xl text-center">
+          <TypeAnimation
+            sequence={[
+              '[INITIALIZING CORE SYSTEMS...]', 200,
+              '[LOADING NEURAL INTERFACE...]', 300,
+              '[DECRYPTING IDENTITY MATRIX...]', 400,
+              'ACCESS GRANTED.', 500,
+              'WELCOME, DOUGLAS.', 1000
+            ]}
+            wrapper="p"
+            cursor={true}
+            speed={70}
+          />
+        </div>
       </div>
-    </div>
-  );
-};
+    );
+  };
+  
 
 // --- Componente Hero Principal ---
 export const Hero: React.FC = () => {
   const [stage, setStage] = useState('matrix'); // 'matrix', 'booting', 'revealed'
 
   useEffect(() => {
-    // --- ALTERAÇÃO AQUI ---
-    // Reduzimos os tempos para acelerar a introdução
-    const timer1 = setTimeout(() => setStage('booting'), 1000); // Duração do Matrix Rain: 1.5s
-    const timer2 = setTimeout(() => setStage('revealed'), 2500); // Duração do Boot Sequence: 2s
+    const timer1 = setTimeout(() => setStage('booting'), 1000); 
+    const timer2 = setTimeout(() => setStage('revealed'), 2500); 
     
     return () => {
       clearTimeout(timer1);
@@ -143,15 +148,36 @@ export const Hero: React.FC = () => {
                   <span className="glitch font-mono" data-text="Nascimento">Nascimento</span>
                 </motion.h1>
                 <motion.p className="text-lg text-cyber-text-secondary mb-8 max-w-xl mx-auto lg:mx-0" variants={itemVariants}>
-                  Assistente SOC N1 na <a href="https://www.darede.com.br/" target="_blank" rel="noopener noreferrer" className="font-semibold text-cyber-neon-green hover:underline">Darede</a>. Ex-Desenvolvedor Java em transição de carreira para Segurança Cibernética, focado em fortalecer defesas digitais.
+                  Assistente SOC N1. Ex-Desenvolvedor Java em transição de carreira para Segurança Cibernética, focado em fortalecer defesas digitais.
                 </motion.p>
-                <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mb-8" variants={itemVariants}>
+
+                {/* --- NOVA SEÇÃO DA EMPRESA INTEGRADA AQUI --- */}
+                <motion.div className="mt-8 text-center lg:text-left" variants={itemVariants}>
+                  <div className="flex items-center justify-center lg:justify-start space-x-2 text-cyber-text-secondary mb-4">
+                    <Building className="h-5 w-5" />
+                    <span className="font-semibold">Atualmente na</span>
+                  </div>
+                  <div className="flex justify-center lg:justify-start items-center space-x-8 mb-4">
+                    <a href="https://www.darede.com.br/" target="_blank" rel="noopener noreferrer" title="Darede">
+                      <img src={DaredeLogo} alt="Darede Logo" className="h-14 opacity-90 transition-all duration-300 hover:opacity-100 hover:scale-105" />
+                    </a>
+                    <a href="https://secoffice.com.br/" target="_blank" rel="noopener noreferrer" title="SecOffice">
+                      <img src={SecofficeLogo} alt="SecOffice Logo" className="h-12 opacity-90 transition-all duration-300 hover:opacity-100 hover:scale-105" />
+                    </a>
+                  </div>
+                  <p className="text-sm text-cyber-text-secondary max-w-xl mx-auto lg:mx-0">
+                    Contribuindo em uma das líderes em Cibersegurança e Cloud no Brasil.
+                  </p>
+                </motion.div>
+
+                <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mt-8" variants={itemVariants}>
                   <a href="" download className="btn-cyber flex items-center space-x-2 px-8 py-3 font-semibold">
                     <Download className="h-5 w-5" />
                     <span>Download CV</span>
                   </a>
                 </motion.div>
-                <motion.div className="flex justify-center lg:justify-start space-x-6" variants={itemVariants}>
+
+                <motion.div className="flex justify-center lg:justify-start space-x-6 mt-8" variants={itemVariants}>
                   {[
                     { icon: Github, href: 'https://github.com/devDouglasN', label: 'GitHub' },
                     { icon: Linkedin, href: 'https://linkedin.com/in/douglascloudsec', label: 'LinkedIn' },

@@ -112,6 +112,15 @@ body {
   }
 }
 
+@layer utilities {
+  .company-badge {
+    @apply rounded-lg bg-[#0e1117]/60 backdrop-blur p-2 transition-all duration-300;
+  }
+  .shadow-neon-cyan\/50 {
+    box-shadow: 0 0 12px rgba(0, 224, 255, 0.5);
+  }
+}
+
 @keyframes glitch-2 {
   0%, 20%, 21%, 62%, 63%, 99%, 100% {
     transform: translate(0);

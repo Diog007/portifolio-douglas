@@ -84,20 +84,11 @@ export const About: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
-              Do <span className="gradient-text">Atendimento</span> ao <span className="neon-text">SOC</span>
+              Minha <span className="gradient-text">Jornada</span> Profissional
             </h1>
             <p className="text-xl text-cyber-text-secondary leading-relaxed mb-8">
-              Uma jornada de transformação pessoal e profissional, onde cada experiência 
-              contribuiu para formar o profissional que sou hoje, iniciando na área de segurança cibernética.
+              Com uma base sólida construída em diversas áreas de atuação, minha carreira é marcada por uma transição estratégica e dedicada à tecnologia e segurança cibernética. Cada experiência contribuiu para desenvolver uma perspectiva única e um conjunto de habilidades que aplico hoje para enfrentar os desafios do universo digital.
             </p>
-            <div className="flex justify-center">
-              <div className="p-6 rounded-lg bg-cyber-accent border border-cyber-border">
-                <p className="font-mono text-cyber-neon-cyan">
-                  "A segurança é uma jornada de aprendizado constante, não um destino."
-                </p>
-                <p className="text-cyber-text-secondary mt-2">- Douglas Nascimento</p>
-              </div>
-            </div>
           </motion.div>
         </div>
       </section>

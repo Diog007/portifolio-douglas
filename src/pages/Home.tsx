@@ -1,14 +1,20 @@
+// src/pages/Home.tsx
+
 import React from 'react';
 import { Hero } from '../components/Hero';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Shield, Code, GraduationCap, Clock } from 'lucide-react';
+import { Shield, Code, GraduationCap, Clock, Building, Briefcase } from 'lucide-react';
+
+// --- ADICIONE A IMPORTAÇÃO DOS LOGOS AQUI ---
+import DaredeLogo from '/public/logotipo-darede-colorido.svg'; // Exemplo de caminho
+import SecofficeLogo from '/secoffice-white-red.png'; // Exemplo de caminho
 
 const stats = [
   { icon: GraduationCap, label: 'Semestre Atual', value: '6º', color: 'text-cyber-neon-cyan' },
-  { icon: Shield, label: 'Experiência SOC', value: '1 mês', color: 'text-cyber-neon-green' },
+  { icon: Briefcase, label: 'Experiência Profissional', value: '1 mês', color: 'text-cyber-neon-green' },
   { icon: Code, label: 'Background Dev', value: '2+ anos', color: 'text-cyber-neon-purple' },
-  { icon: Clock, label: 'Foco Blue Team', value: '1 ano', color: 'text-cyber-warning' },
+  { icon: Clock, label: 'Foco em Blue Team', value: '1 ano', color: 'text-cyber-warning' },
 ];
 
 export const Home: React.FC = () => {
@@ -21,6 +27,8 @@ export const Home: React.FC = () => {
     <div className="pt-16">
       <Hero />
       
+
+
       {/* Stats Section */}
       <section className="py-20 bg-cyber-secondary">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -127,6 +135,7 @@ export const Home: React.FC = () => {
                 <div className="space-y-2 text-cyber-text-secondary">
                   <div className="text-cyber-neon-cyan">Name: Douglas Nascimento</div>
                   <div className="text-cyber-text-primary">Role: SOC Analyst N1 (Trainee)</div>
+                  <div className="text-cyber-text-primary">Company: Darede | SecOffice</div>
                   <div className="text-cyber-text-primary">Education: UNINOVE - 6º Semestre</div>
                   <div className="text-cyber-text-primary">Lab: [Wazuh, Kali, Windows Server]</div>
                   <div className="text-cyber-text-primary">Certifications: [AWS-CCP]</div>
