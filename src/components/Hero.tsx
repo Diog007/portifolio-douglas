@@ -101,13 +101,6 @@ export const Hero: React.FC = () => {
               </p>
             </motion.div>
 
-            {/* Botão de Download CV (Restaurado) */}
-            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mt-8" variants={itemVariants}>
-              <a href="" download className="btn-cyber flex items-center space-x-2 px-8 py-3 font-semibold">
-                <Download className="h-5 w-5" />
-                <span>Download CV</span>
-              </a>
-            </motion.div>
 
             {/* Links Sociais (Restaurados) */}
             <motion.div className="flex justify-center lg:justify-start space-x-6 mt-8" variants={itemVariants}>

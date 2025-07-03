@@ -300,7 +300,7 @@ export const Timeline: React.FC = () => {
         </div>
       </section>
 
-      {/* Future Goals */}
+      {/* --- SEÇÃO MODIFICADA --- */}
       <section className="py-20 bg-cyber-secondary ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
@@ -320,19 +320,21 @@ export const Timeline: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 justify-center ">
             {[
+              // Card da Esquerda
+              {
+                title: 'CrowdStrike Certified Falcon Responder (CCFR)',
+                description: 'Certificação focada em resposta a incidentes e análise forense com a plataforma Falcon.',
+                timeline: '2025',
+                icon: Shield, // Ícone de escudo, relevante para segurança
+                color: 'from-blue-500 to-indigo-600'
+              },
+              // Card da Direita
               {
                 title: 'Certificação Security+',
-                description: 'Obter a certificação CompTIA Security+ para validar conhecimentos',
-                timeline: '2025',
+                description: 'Obter a certificação CompTIA Security+ para validar conhecimentos fundamentais.',
+                timeline: '2026',
                 icon: Award,
                 color: 'from-red-500 to-pink-600'
-              },
-              {
-                title: 'Conclusão da Graduação',
-                description: 'Finalizar o bacharelado em Sistemas de Informação',
-                timeline: '2026',
-                icon: GraduationCap,
-                color: 'from-green-500 to-emerald-600'
               }
             ].map((goal, index) => (
               <motion.div
