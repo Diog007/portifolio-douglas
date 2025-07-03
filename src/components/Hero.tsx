@@ -1,97 +1,77 @@
 // src/components/Hero.tsx
 
-// --- 1. Importações ---
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-
-// Ícones e outros componentes
 import { Download, Github, Linkedin, Mail, Building } from 'lucide-react';
 import { CyberBackground } from './CyberBackground';
 
-// Logos (mantenha os caminhos corretos)
-import DaredeLogo from '/logotipo-darede-colorido.svg';
+// Logos e imagens
+import DaredeLogo from '/logotipo-darede-colorido.svg'; 
 import SecofficeLogo from '/secoffice-white-red.png';
 
-// --- 2. Suas Imagens ---
+// --- IMAGENS PARA ALTERNAR ---
 // !!! IMPORTANTE: Substitua estes caminhos pelos caminhos corretos das suas imagens !!!
-import profileImageDefault from '/dodo1.png';
-import profileImageHover from '/dodo.png';
+import profileImageDefault from '/dodo.png';
+import profileImageHover from '/dodo1.png';
 
 
 export const Hero: React.FC = () => {
-  // --- 3. Gerenciamento de Estado ---
-  // Estado para controlar a imagem que está sendo exibida.
+  // Estado que gerencia a imagem atual
   const [currentImage, setCurrentImage] = useState(profileImageDefault);
 
-  // --- 4. Manipuladores de Evento ---
-  // Função para trocar para a imagem de hover
-  const handleMouseEnter = () => {
-    setCurrentImage(profileImageHover);
-  };
+  // Funções para lidar com os eventos do mouse
+  const handleMouseEnter = () => setCurrentImage(profileImageHover);
+  const handleMouseLeave = () => setCurrentImage(profileImageDefault);
 
-  // Função para voltar para a imagem padrão
-  const handleMouseLeave = () => {
-    setCurrentImage(profileImageDefault);
-  };
+  // Variantes para animação
+  const containerVariants = { hidden: { opacity: 0 }, visible: { opacity: 1, transition: { staggerChildren: 0.15 }}};
+  const itemVariants = { hidden: { opacity: 0, y: 30 }, visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 }}};
 
-  // --- 5. Animações Framer Motion ---
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
-  };
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } }
-  };
-
-  // --- 6. Renderização do Componente (JSX) ---
   return (
     <section className="relative h-[75vh] flex items-center justify-center overflow-hidden bg-cyber-primary">
       
-      {/* Background interativo em uma camada inferior */}
-      <div className="absolute top-0 left-0 w-full h-full">
+      {/* Background Interativo */}
+      <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <CyberBackground density={1} style={{ width: '100%', height: '100%' }} />
       </div>
 
-      {/* Conteúdo do Hero em uma camada superior */}
+      {/* Conteúdo Principal do Hero */}
       <motion.div
-        className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 pointer-events-none"
+        className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10"
         initial="hidden"
         animate="visible"
         variants={containerVariants}
       >
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          
-          {/* Lado da Imagem */}
+
+          {/* Lado da Imagem com Efeito de Hover */}
           <motion.div
-            className="flex justify-center pointer-events-auto" // Permite eventos de mouse nesta área
+            className="flex justify-center"
             variants={itemVariants}
-            onMouseEnter={handleMouseEnter} // Aciona a troca de imagem ao entrar com o mouse
-            onMouseLeave={handleMouseLeave} // Reverte a imagem ao sair com o mouse
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
           >
             <div className="relative group">
-              {/* Efeito de brilho animado */}
-              <motion.div
+              <motion.div 
                 className="absolute -inset-1.5 bg-gradient-to-r from-cyber-neon-purple via-cyber-neon-cyan to-cyber-neon-green rounded-full blur opacity-75 group-hover:opacity-100 transition-opacity duration-300"
                 animate={{ rotate: 360 }}
                 transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
               />
-              {/* Container da imagem com bordas arredondadas */}
               <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden">
                 <motion.img
-                  key={currentImage} // Chave única para forçar a re-renderização e a animação
+                  key={currentImage} // Chave para animar a troca da imagem
                   src={currentImage}
                   alt="Douglas Nascimento"
                   className="w-full h-full object-cover"
                   initial={{ opacity: 0, scale: 0.95 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.4, ease: 'easeInOut' }} // Transição suave
+                  transition={{ duration: 0.4, ease: 'easeInOut' }}
                 />
               </div>
             </div>
           </motion.div>
 
-          {/* Lado do Texto */}
+          {/* Lado do Texto e Informações */}
           <motion.div className="lg:col-span-1 text-center lg:text-left">
             <motion.h1 className="text-4xl sm:text-6xl lg:text-7xl font-bold mb-4" variants={itemVariants} style={{ textShadow: '0 0 8px rgba(0, 224, 255, 0.3)' }}>
               <span className="gradient-text">Douglas</span><br />
@@ -101,12 +81,47 @@ export const Hero: React.FC = () => {
             <motion.p className="text-lg text-cyber-text-secondary mb-8 max-w-xl mx-auto lg:mx-0" variants={itemVariants}>
               Assistente SOC N1. Ex-Desenvolvedor Java em transição de carreira para Segurança Cibernética, focado em fortalecer defesas digitais.
             </motion.p>
-            
-            {/* Seção Empresa e Botões (com pointer-events-auto para serem clicáveis) */}
-            <motion.div variants={itemVariants} className="pointer-events-auto">
-              {/* Conteúdo da empresa, CV e links sociais... */}
+
+            {/* Seção da Empresa (Restaurada) */}
+            <motion.div className="mt-8 text-center lg:text-left" variants={itemVariants}>
+              <div className="flex items-center justify-center lg:justify-start space-x-2 text-cyber-text-secondary mb-4">
+                <Building className="h-5 w-5" />
+                <span className="font-semibold">Atualmente na</span>
+              </div>
+              <div className="flex justify-center lg:justify-start items-center space-x-8 mb-4">
+                <a href="https://www.darede.com.br/" target="_blank" rel="noopener noreferrer" title="Darede">
+                  <img src={DaredeLogo} alt="Darede Logo" className="h-14 opacity-90 transition-all duration-300 hover:opacity-100 hover:scale-105" />
+                </a>
+                <a href="https://secoffice.com.br/" target="_blank" rel="noopener noreferrer" title="SecOffice">
+                  <img src={SecofficeLogo} alt="SecOffice Logo" className="h-12 opacity-90 transition-all duration-300 hover:opacity-100 hover:scale-105" />
+                </a>
+              </div>
+              <p className="text-sm text-cyber-text-secondary max-w-xl mx-auto lg:mx-0">
+                Contribuindo em uma das líderes em Cibersegurança e Cloud no Brasil.
+              </p>
             </motion.div>
-            
+
+            {/* Botão de Download CV (Restaurado) */}
+            <motion.div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start items-center mt-8" variants={itemVariants}>
+              <a href="" download className="btn-cyber flex items-center space-x-2 px-8 py-3 font-semibold">
+                <Download className="h-5 w-5" />
+                <span>Download CV</span>
+              </a>
+            </motion.div>
+
+            {/* Links Sociais (Restaurados) */}
+            <motion.div className="flex justify-center lg:justify-start space-x-6 mt-8" variants={itemVariants}>
+              {[
+                { icon: Github, href: 'https://github.com/devDouglasN', label: 'GitHub' },
+                { icon: Linkedin, href: 'https://linkedin.com/in/douglascloudsec', label: 'LinkedIn' },
+                { icon: Mail, href: 'mailto:douglas.cloudsec@gmail.com', label: 'Email' },
+              ].map((social) => (
+                <a key={social.label} href={social.href} target="_blank" rel="noopener noreferrer" className="p-3 text-cyber-text-secondary hover:text-cyber-neon-cyan transition-all duration-300">
+                  <social.icon className="h-6 w-6" />
+                </a>
+              ))}
+            </motion.div>
+
           </motion.div>
         </div>
       </motion.div>
