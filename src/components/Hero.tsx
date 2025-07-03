@@ -30,10 +30,11 @@ export const Hero: React.FC = () => {
   return (
     <section className="relative h-[75vh] flex items-center justify-center overflow-hidden bg-cyber-primary">
       
-      {/* Background Interativo */}
+      {/* Background Interativo wewe*/}
       <div className="absolute top-0 left-0 w-full h-full pointer-events-none">
         <CyberBackground density={1} style={{ width: '100%', height: '100%' }} />
       </div>
+
 
       {/* Conteúdo Principal do Hero */}
       <motion.div
