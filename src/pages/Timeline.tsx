@@ -23,7 +23,7 @@ const timelineEvents = [
     location: 'São Paulo, SP',
     period: 'Jul 2025 - Presente',
     type: 'work',
-    description: 'Primeira experiência prática em segurança operacional: triagem de alertas, escalonamento e tuning de regras no SIEM.',
+    description: 'Primeira experiência prática em segurança operacional, atuando na triagem de alertas, escalonamento de incidentes e ajuste de regras no SIEM. Atuação em uma das principais consultorias de cibersegurança do Brasil, reconhecida como a única com o mais alto nível de parceria oficial com a AWS no país.',
     achievements: [
       'Primeiro mês de experiência em SOC',
       'Triagem de alertas de segurança',
@@ -180,10 +180,7 @@ export const Timeline: React.FC = () => {
                 <div className="text-3xl font-bold text-cyber-neon-green">6º</div>
                 <div className="text-cyber-text-secondary">Semestre</div>
               </div>
-              <div className="text-center">
-                <div className="text-3xl font-bold text-cyber-neon-purple">7+</div>
-                <div className="text-cyber-text-secondary">Anos de Experiência</div>
-              </div>
+
             </div>
           </motion.div>
         </div>
@@ -304,7 +301,7 @@ export const Timeline: React.FC = () => {
       </section>
 
       {/* Future Goals */}
-      <section className="py-20 bg-cyber-secondary">
+      <section className="py-20 bg-cyber-secondary ">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             className="text-center mb-16"
@@ -321,7 +318,7 @@ export const Timeline: React.FC = () => {
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 justify-center ">
             {[
               {
                 title: 'Certificação Security+',
@@ -329,13 +326,6 @@ export const Timeline: React.FC = () => {
                 timeline: '2025',
                 icon: Award,
                 color: 'from-red-500 to-pink-600'
-              },
-              {
-                title: 'Especialização SOC',
-                description: 'Evoluir para SOC N2 com foco em análise avançada de ameaças',
-                timeline: '2025',
-                icon: Shield,
-                color: 'from-purple-500 to-indigo-600'
               },
               {
                 title: 'Conclusão da Graduação',

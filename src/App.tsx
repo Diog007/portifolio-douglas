@@ -7,16 +7,15 @@ import { Skills } from './pages/Skills';
 import { Projects } from './pages/Projects';
 import { Timeline } from './pages/Timeline';
 import { Contact } from './pages/Contact';
-// A linha abaixo foi removida
-// import { Blog } from './pages/Blog'; 
 import { Privacy } from './pages/Privacy';
 import { Footer } from './components/Footer';
 import { MatrixRain } from './components/MatrixRain';
-import { ScrollToTop } from './components/ScrollToTop';
+import { ScrollToTopOnMount } from './components/ScrollToTopOnMount';
 
 function App() {
   return (
     <Router>
+      <ScrollToTopOnMount />
       <div className="min-h-screen bg-cyber-primary text-cyber-text-primary overflow-x-hidden">
         <MatrixRain />
         <Navigation />
@@ -29,14 +28,11 @@ function App() {
             <Route path="/projects" element={<Projects />} />
             <Route path="/timeline" element={<Timeline />} />
             <Route path="/contact" element={<Contact />} />
-            {/* A linha abaixo foi removida */}
-            {/* <Route path="/blog" element={<Blog />} /> */}
             <Route path="/privacy" element={<Privacy />} />
           </Routes>
         </main>
         
         <Footer />
-        <ScrollToTop />
       </div>
     </Router>
   );

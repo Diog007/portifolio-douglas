@@ -310,11 +310,7 @@ export const Skills: React.FC = () => {
                           goal: '2025',
                           icon: Cloud,
                         },
-                        {
-                          name: 'Cloud Computing Engineer – IA',
-                          goal: '2026',
-                          icon: Lightbulb,
-                        },
+
                         {
                           name: 'CompTIA Security+ (ou CISA+)',
                           goal: '2026',
