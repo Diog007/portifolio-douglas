@@ -1,7 +1,7 @@
 // src/components/Hero.tsx
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Building, Github, Linkedin, Mail } from 'lucide-react';
 import { CyberBackground } from './CyberBackground';
 
@@ -9,12 +9,16 @@ import { CyberBackground } from './CyberBackground';
 import DaredeLogo from '/logotipo-darede-colorido.svg';
 import SecofficeLogo from '/secoffice-white-red.png';
 
-// --- IMAGEM E VÍDEO ---
-// Certifique-se de que a imagem aqui tenha um fundo transparente (formato PNG, por exemplo)
-import profileImage from '/teste.png'; // <-- ATUALIZE PARA SUA IMAGEM SEM FUNDO
+// --- IMAGENS E VÍDEO ---
+// Certifique-se de que ambas as imagens tenham fundo transparente (formato PNG)
+import profileImageDefault from '/teste.png'; // Imagem padrão
+import profileImageHover from '/dd.png'; // <-- IMAGEM QUE APARECERÁ NO HOVER
 import profileVideo from '/video2.mp4'; // O caminho para o seu vídeo MP4
 
 export const Hero: React.FC = () => {
+  // Estado para controlar o hover
+  const [isHovering, setIsHovering] = useState(false);
+
   // Variantes para animação do Framer Motion
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -42,13 +46,15 @@ export const Hero: React.FC = () => {
           <motion.div
             className="flex justify-center"
             variants={itemVariants}
+            onMouseEnter={() => setIsHovering(true)}
+            onMouseLeave={() => setIsHovering(false)}
           >
             <div className="relative group">
               <motion.div
-                className="absolute -inset-0.5 bg-gradient-to-r from-cyber-neon-purple via-cyber-neon-cyan to-cyber-neon-green rounded-2xl blur opacity-65 transition-opacity duration-300" // <-- ALTERADO AQUI
+                className="absolute -inset-1.5 bg-gradient-to-r from-cyber-neon-purple via-cyber-neon-cyan to-cyber-neon-green rounded-2xl blur opacity-75 transition-opacity duration-300"
                 animate={{ rotate: 270 }}
               />
-              <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden bg-cyber-primary"> {/* <-- ALTERADO AQUI */}
+              <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden bg-cyber-primary">
                 {/* Vídeo de fundo */}
                 <video
                   className="absolute top-0 left-0 w-full h-full object-cover"
@@ -58,12 +64,19 @@ export const Hero: React.FC = () => {
                   autoPlay
                   playsInline
                 />
-                {/* Imagem sem fundo por cima */}
-                <img
-                  src={profileImage}
-                  alt="Douglas Nascimento"
-                  className="absolute top-0 left-0 w-full h-full object-cover"
-                />
+                {/* Imagens com troca suave no hover */}
+                <AnimatePresence initial={false}>
+                  <motion.img
+                    key={isHovering ? 'hover' : 'default'}
+                    src={isHovering ? profileImageHover : profileImageDefault}
+                    alt="Douglas Nascimento"
+                    className="absolute top-0 left-0 w-full h-full object-cover"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                  />
+                </AnimatePresence>
               </div>
             </div>
           </motion.div>
