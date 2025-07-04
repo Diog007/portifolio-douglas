@@ -11,7 +11,7 @@ import SecofficeLogo from '/secoffice-white-red.png';
 
 // --- IMAGENS PARA ALTERNAR ---
 // !!! IMPORTANTE: Substitua estes caminhos pelos caminhos corretos das suas imagens !!!
-import profileImageDefault from '/dodo.png';
+import profileImageDefault from '/dodo2.jpeg';
 import profileImageHover from '/dodo1.png';
 
 
