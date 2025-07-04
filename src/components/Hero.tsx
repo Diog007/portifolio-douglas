@@ -45,11 +45,10 @@ export const Hero: React.FC = () => {
           >
             <div className="relative group">
               <motion.div
-                className="absolute -inset-1.5 bg-gradient-to-r from-cyber-neon-purple via-cyber-neon-cyan to-cyber-neon-green rounded-full blur opacity-75 transition-opacity duration-300"
-                animate={{ rotate: 360 }}
-                transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                className="absolute -inset-0.5 bg-gradient-to-r from-cyber-neon-purple via-cyber-neon-cyan to-cyber-neon-green rounded-2xl blur opacity-65 transition-opacity duration-300" // <-- ALTERADO AQUI
+                animate={{ rotate: 270 }}
               />
-              <div className="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden bg-cyber-primary">
+              <div className="relative w-80 h-80 md:w-96 md:h-96 rounded-2xl overflow-hidden bg-cyber-primary"> {/* <-- ALTERADO AQUI */}
                 {/* Vídeo de fundo */}
                 <video
                   className="absolute top-0 left-0 w-full h-full object-cover"
