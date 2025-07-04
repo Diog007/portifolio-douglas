@@ -29,7 +29,7 @@ const projects = [
     tags: ['Wazuh', 'SIEM', 'Blue Team', 'Virtualization', 'Linux'],
     category: 'security',
     github: 'https://github.com/devDouglasN/homelab-soc',
-    featured: true,
+    featured: false, // <-- ALTERADO DE TRUE PARA FALSE
   },
   // Novos Projetos de Programação (Não são destaque)
   {
@@ -159,7 +159,7 @@ export const Projects: React.FC = () => {
 
   const filteredProjects = selectedCategory === 'all'
     ? projects.filter(p => !p.featured)
-    : projects.filter(project => project.category === selectedCategory && !project.featured);
+    : projects.filter(project => project.category === selectedCategory && !p.featured);
 
   const featuredProjects = projects.filter(project => project.featured);
 
@@ -197,14 +197,14 @@ export const Projects: React.FC = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl sm:text-4xl font-bold mb-4">
-              Projetos em <span className="gradient-text">Destaque</span>
+              Projeto em <span className="gradient-text">Destaque</span>
             </h2>
             <p className="text-cyber-text-secondary text-lg max-w-2xl mx-auto">
-              Principais projetos que demonstram minha aplicação prática de conhecimentos em Segurança.
+              Principal projeto que demonstra minha aplicação prática de conhecimentos em Segurança.
             </p>
           </motion.div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-1 gap-8 max-w-4xl mx-auto">
             {featuredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
@@ -283,7 +283,6 @@ export const Projects: React.FC = () => {
             {/* Category Filter */}
             <div className="flex flex-wrap justify-center gap-2">
               {categories.map((category) => {
-                 if (category.id === 'security') return null; // Oculta o filtro de segurança
                  const Icon = category.icon;
                  const isActive = selectedCategory === category.id;
 
